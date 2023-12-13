@@ -13,7 +13,7 @@ target/
 .springBeans
 .sts4-cache
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -21,7 +21,7 @@ target/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
-/dist/
+dist/
 /nbdist/
 /.nb-gradle/
 build/
@@ -32,3 +32,9 @@ build/
 .vscode/
 
 *.properties
+
+*.JAR
+*.WAR
+*.EAR
+
+*.class
