@@ -1,6 +1,7 @@
 package com.RevpayApp.RevPay.entities;
 
 import jakarta.persistence.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity(name = "Accounts")
 public class Account {
@@ -13,7 +14,8 @@ public class Account {
     @Column(name = "AccountType") //BUISINESS OR USER
     private String accountType;
 
-
+    @Column(name = "balance")
+    private float balance = 0;
     public Account(String accountType){
 
         this.accountType = accountType;
@@ -37,5 +39,9 @@ public class Account {
 
     public void setAccountType(String accountType) {
         this.accountType = accountType;
+    }
+
+    public void changeBalance(float change){
+        balance = balance + change;
     }
 }

@@ -1,17 +1,12 @@
 package com.RevpayApp.RevPay.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotNull;
-
-import java.util.Objects;
-import java.util.Set;
-
-@Entity(name = "Users")
-public class UserAccount {
-    //AccountId Username Password email phone-number
+@Entity(name = "Business Accounts")
+public class BusinessAccount {
+    //AccountId username password email
     @Id
     @Column(name = "Account Id")
     private int accountId;
@@ -25,18 +20,14 @@ public class UserAccount {
     @Column(name = "Email")
     private String email;
 
-    @Column(name = "Phone Number")
-    private String phoneNumber;
-
-    public UserAccount(int i, String u, String p, String e, String pn){
-        accountId = i;
+    public BusinessAccount(int a, String u, String p, String e){
+        accountId = a;
         username = u;
         password = p;
         email = e;
-        phoneNumber = pn;
     }
 
-    public UserAccount() {
+    public BusinessAccount() {
 
     }
 
@@ -70,13 +61,5 @@ public class UserAccount {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }
