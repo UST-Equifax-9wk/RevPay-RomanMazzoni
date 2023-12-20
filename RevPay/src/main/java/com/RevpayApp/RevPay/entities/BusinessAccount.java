@@ -1,8 +1,9 @@
 package com.RevpayApp.RevPay.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity(name = "Business Accounts")
 public class BusinessAccount {
@@ -19,6 +20,28 @@ public class BusinessAccount {
 
     @Column(name = "Email")
     private String email;
+
+
+    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Transaction> transactions;
+
+    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Card> cards;
+
+    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<BusinessInvoice> invoices;
+
+    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Loan> loans;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "Account Id")
+    private Account account;
 
     public BusinessAccount(int a, String u, String p, String e){
         accountId = a;

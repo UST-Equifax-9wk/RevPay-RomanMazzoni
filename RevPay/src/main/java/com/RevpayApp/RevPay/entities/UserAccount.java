@@ -16,17 +16,31 @@ public class UserAccount {
     @Column(name = "Account Id")
     private int accountId;
 
-    @Column(name = "Username")
+    @Column(name = "Username", unique = true)
     private String username;
 
     @Column(name = "Password")
     private String password;
 
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true)
     private String email;
 
-    @Column(name = "Phone Number")
+    @Column(name = "Phone Number", unique = true)
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Transaction> transactions;
+
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Card> cards;
+
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "Account Id")
+    private Account account;
 
     public UserAccount(int i, String u, String p, String e, String pn){
         accountId = i;

@@ -3,6 +3,8 @@ package com.RevpayApp.RevPay.entities;
 import jakarta.persistence.*;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
+import java.util.Set;
+
 @Entity(name = "Accounts")
 public class Account {
     @Id
@@ -20,6 +22,14 @@ public class Account {
 
         this.accountType = accountType;
     }
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserAccount userAccount;
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private BusinessAccount businessAccount;
 
     public Account() {
 
