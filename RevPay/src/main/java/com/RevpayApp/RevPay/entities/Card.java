@@ -5,11 +5,7 @@ import jakarta.persistence.*;
 
 @Entity(name = "Credit and Debit cards")
 public class Card {
-    //AccountId CardType CardNumber SecurityCode Expiration Zipcode
-
-
-    @Column(name = "AccountId")
-    private int accountId;
+    //cardId CardType CardNumber SecurityCode Expiration Zipcode
 
     @Id
     @Column(name = "Card Id")
@@ -31,8 +27,13 @@ public class Card {
     @Column(name = "Zipcode")
     private String zipcode;
 
+    @ManyToOne
+    @JoinColumn(name = "Account Id")
+    private Account account;
+
+
     public Card(int a, String ct, String cn, String s, String e, String z){
-        accountId =a;
+        cardId =a;
         cardType = ct;
         cardNumber = cn;
         securityCode = s;
@@ -44,12 +45,12 @@ public class Card {
 
     }
 
-    public int getAccountId() {
-        return accountId;
+    public int getcardId() {
+        return cardId;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setcardId(int cardId) {
+        this.cardId = cardId;
     }
 
     public int getCardId() {

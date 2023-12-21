@@ -28,15 +28,6 @@ public class UserAccount {
     @Column(name = "Phone Number", unique = true)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
-    private Set<Transaction> transactions;
-
-    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
-    private Set<Card> cards;
-
-
     @OneToOne
     @MapsId
     @JoinColumn(name = "Account Id")

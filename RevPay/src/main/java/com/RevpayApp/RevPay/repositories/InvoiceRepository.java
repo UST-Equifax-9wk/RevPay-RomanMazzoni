@@ -8,5 +8,5 @@ import java.util.Set;
 
 @Repository
 public interface InvoiceRepository extends JpaRepository<BusinessInvoice, Integer> {
-    Set<BusinessInvoice> getBusinessInvoicesByAccountId(int ai);
+
 }

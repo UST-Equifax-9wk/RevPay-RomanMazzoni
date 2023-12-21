@@ -22,13 +22,7 @@ public class BusinessAccount {
     private String email;
 
 
-    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
-    private Set<Transaction> transactions;
 
-    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
-    private Set<Card> cards;
 
     @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
     @JsonManagedReference

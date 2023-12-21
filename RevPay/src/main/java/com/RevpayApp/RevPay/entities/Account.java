@@ -1,5 +1,6 @@
 package com.RevpayApp.RevPay.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
@@ -30,6 +31,14 @@ public class Account {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private BusinessAccount businessAccount;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Transaction> transactions;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Card> cards;
 
     public Account() {
 

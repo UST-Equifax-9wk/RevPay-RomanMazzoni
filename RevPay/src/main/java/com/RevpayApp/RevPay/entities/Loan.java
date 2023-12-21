@@ -7,8 +7,6 @@ public class Loan {
     //AccountId distributer Amountremaining interest initialloan initialdate
 
 
-    @Column(name = "Account Id")
-    private int accountId;
 
     @Id
     @Column(name = "Loan Id")
@@ -30,8 +28,11 @@ public class Loan {
     @Column(name = "Loan Start Date")
     private String loanStartDate;
 
-    public Loan(int a, int l, String d, float ia, float i, String ls){
-        accountId = a;
+    @ManyToOne
+    @JoinColumn(name = "Account Id")
+    private BusinessAccount businessAccount;
+
+    public Loan(int l, String d, float ia, float i, String ls){
         loanId = l;
         distributer =d;
         remainingTotal = ia;
@@ -44,13 +45,6 @@ public class Loan {
 
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
 
     public int getLoanId() {
         return loanId;

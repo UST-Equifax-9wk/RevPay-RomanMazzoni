@@ -34,5 +34,8 @@ public class UserAccountService {
         Optional<UserAccount> ua = userRepository.findByPhoneNumber(pn);
         return ua.get();
     }
+    public UserAccount createNewUser(UserAccount ua){
+        return userRepository.save(ua);
+    }
 
 }

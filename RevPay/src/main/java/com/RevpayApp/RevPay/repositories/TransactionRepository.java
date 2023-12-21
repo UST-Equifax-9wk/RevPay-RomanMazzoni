@@ -8,5 +8,5 @@ import java.util.Set;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
-    Set<Transaction> getTransactionsByAccountId(int ai);
+
 }

@@ -1,18 +1,15 @@
 package com.RevpayApp.RevPay.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity(name = "Transactions")
 public class Transaction {
     //AccountId TransactionId TransactionDetails TransactionAmount
 
-    @Column(name = "Account Id")
-    private int accountId;
 
     @Id
     @Column(name = "Transaction Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionId;
 
     @Column(name = "Transaction Details")
@@ -21,9 +18,12 @@ public class Transaction {
     @Column(name = "Transaction Amount")
     private float transactionAmount;
 
-    public Transaction(int a, int t, String td, float ta){
-        accountId =a;
-        transactionId = t;
+    @ManyToOne
+    @JoinColumn(name = "Account Id")
+    private Account account;
+
+
+    public Transaction(String td, float ta){
         transactionDetails = td;
         transactionAmount = ta;
     }
@@ -32,13 +32,6 @@ public class Transaction {
 
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
 
     public int getTransactionId() {
         return transactionId;

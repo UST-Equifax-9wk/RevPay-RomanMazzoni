@@ -1,16 +1,14 @@
 package com.RevpayApp.RevPay.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity(name = "BusinessInvoices")
 public class BusinessInvoice {
-    //AccountId InvoiceDetails Amount
+    //invoiceId InvoiceDetails Amount
 
     @Id
-    @Column(name = "Account Id")
-    private int accountId;
+    @Column(name = "Invoice Id")
+    private int invoiceId;
 
     @Column(name = "Invoice Details")
     private String invoiceDetails;
@@ -18,8 +16,11 @@ public class BusinessInvoice {
     @Column(name = "Invoice Amount")
     private float amount = 0;
 
+    @ManyToOne
+    @JoinColumn(name = "Account Id")
+    private BusinessAccount businessAccount;
     public BusinessInvoice(int a, String i, float am){
-        accountId = a;
+        invoiceId = a;
         invoiceDetails = i;
         amount = am;
     }
@@ -28,12 +29,12 @@ public class BusinessInvoice {
 
     }
 
-    public int getAccountId() {
-        return accountId;
+    public int getinvoiceId() {
+        return invoiceId;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setinvoiceId(int invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
     public String getInvoiceDetails() {
