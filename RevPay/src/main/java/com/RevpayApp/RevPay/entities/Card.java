@@ -40,6 +40,15 @@ public class Card {
         expirationDate = e;
         zipcode = z;
     }
+    public Card(int a, String ct, String cn, String s, String e, String z, Account acc){
+        cardId =a;
+        cardType = ct;
+        cardNumber = cn;
+        securityCode = s;
+        expirationDate = e;
+        zipcode = z;
+        account = acc;
+    }
 
     public Card() {
 
@@ -99,5 +108,13 @@ public class Card {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

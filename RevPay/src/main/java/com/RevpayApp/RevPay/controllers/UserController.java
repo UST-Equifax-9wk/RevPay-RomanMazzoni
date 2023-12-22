@@ -40,4 +40,12 @@ public class UserController {
         return userAccountService.getByEmail(email);
     }
 
+    @GetMapping(path = "/userAccounts/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    UserAccount getUserByAccountId(@PathVariable int id) throws ObjectNotFoundException {
+        return userAccountService.getByAccountID(id);
+    }
+
+
+
 }

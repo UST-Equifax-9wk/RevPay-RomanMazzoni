@@ -45,4 +45,11 @@ public class UserAccountService {
         return userRepository.save(ua);
     }
 
+    public UserAccount getByAccountID(int id) throws ObjectNotFoundException {
+        Optional<UserAccount> ua = userRepository.findById(id);
+        if(ua.isEmpty())
+            throw new ObjectNotFoundException("Could not find a user with the id: " +id);
+        return ua.get();
+    }
+
 }

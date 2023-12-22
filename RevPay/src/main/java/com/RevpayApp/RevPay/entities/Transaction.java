@@ -27,6 +27,11 @@ public class Transaction {
         transactionDetails = td;
         transactionAmount = ta;
     }
+    public Transaction(String td, float ta, Account a){
+        transactionDetails = td;
+        transactionAmount = ta;
+        account = a;
+    }
 
     public Transaction() {
 
@@ -55,5 +60,13 @@ public class Transaction {
 
     public void setTransactionAmount(float transactionAmount) {
         this.transactionAmount = transactionAmount;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
