@@ -6,6 +6,7 @@ import com.RevpayApp.RevPay.entities.Transaction;
 import com.RevpayApp.RevPay.repositories.AccountRepository;
 import com.RevpayApp.RevPay.repositories.TransactionRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -16,6 +17,7 @@ public class TransactionService {
     private final AccountRepository accountRepository;
     private final TransactionRepository TransactionRepository;
 
+    @Autowired
     public TransactionService(AccountRepository accountRepository, TransactionRepository TransactionRepository) {
         this.accountRepository = accountRepository;
         this.TransactionRepository = TransactionRepository;

@@ -8,5 +8,5 @@ import java.util.Set;
 
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Integer> {
-
+    Set<Loan> getLoansByAccount_Id(Integer i);
 }

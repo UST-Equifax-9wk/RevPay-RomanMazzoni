@@ -1,5 +1,6 @@
 package com.RevpayApp.RevPay.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity(name = "Transactions")
@@ -12,6 +13,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionId;
 
+
     @Column(name = "Transaction Details")
     private String transactionDetails;
 
@@ -20,6 +22,7 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "Account Id")
+    @JsonBackReference
     private Account account;
 
 
@@ -69,4 +72,5 @@ public class Transaction {
     public void setAccount(Account account) {
         this.account = account;
     }
+
 }

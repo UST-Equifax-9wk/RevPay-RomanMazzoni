@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UserController {
     private final UserAccountService userAccountService;
@@ -16,31 +18,42 @@ public class UserController {
     }
 
 
-    @CrossOrigin
     @PostMapping(path = "/userAccounts")
     @ResponseStatus(HttpStatus.OK)
     UserAccount registerUserAccount(@RequestBody UserAccount userAccount){
         return userAccountService.createNewUser(userAccount);
     }
 
-    @GetMapping(path = "/userAccounts/{username}")
+    @GetMapping(path = "/userAccounts/username={username}")
     @ResponseStatus(HttpStatus.OK)
     UserAccount getUserByUsername(@PathVariable String username) throws ObjectNotFoundException{
         return userAccountService.getByUsername(username);
     }
-    @GetMapping(path = "/userAccounts/{phoneNumber}")
+
+
+
+    @GetMapping(path = "/userAccounts")
+    @ResponseStatus(HttpStatus.OK)
+    List<UserAccount> getAllUsers(){
+        return userAccountService.getAllUsers();
+    }
+
+
+    @GetMapping(path = "/userAccounts/phonenumber={phoneNumber}")
     @ResponseStatus(HttpStatus.OK)
     UserAccount getUserByPhoneNumber(@PathVariable String phoneNumber) throws ObjectNotFoundException{
         return userAccountService.getByPhoneNumber(phoneNumber);
     }
 
-    @GetMapping(path = "/userAccounts/{email}")
+    @GetMapping(path = "/userAccounts/email={email}")
     @ResponseStatus(HttpStatus.OK)
     UserAccount getUserByEmail(@PathVariable String email) throws ObjectNotFoundException{
         return userAccountService.getByEmail(email);
     }
 
-    @GetMapping(path = "/userAccounts/{id}")
+
+
+    @GetMapping(path = "/userAccounts/AccountId={id}")
     @ResponseStatus(HttpStatus.OK)
     UserAccount getUserByAccountId(@PathVariable int id) throws ObjectNotFoundException {
         return userAccountService.getByAccountID(id);

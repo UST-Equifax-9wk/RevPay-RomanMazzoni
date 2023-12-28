@@ -16,6 +16,7 @@ public class UserAccount {
     @Column(name = "Account Id")
     private int accountId;
 
+
     @Column(name = "Username", unique = true)
     private String username;
 
@@ -28,13 +29,17 @@ public class UserAccount {
     @Column(name = "Phone Number", unique = true)
     private String phoneNumber;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "Account Id")
-    private Account account;
+
+
 
     public UserAccount(int i, String u, String p, String e, String pn){
         accountId = i;
+        username = u;
+        password = p;
+        email = e;
+        phoneNumber = pn;
+    }
+    public UserAccount(String u, String p, String e, String pn){
         username = u;
         password = p;
         email = e;

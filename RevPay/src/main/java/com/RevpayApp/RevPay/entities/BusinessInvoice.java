@@ -1,5 +1,6 @@
 package com.RevpayApp.RevPay.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity(name = "BusinessInvoices")
@@ -18,7 +19,8 @@ public class BusinessInvoice {
 
     @ManyToOne
     @JoinColumn(name = "Account Id")
-    private BusinessAccount businessAccount;
+    @JsonBackReference
+    private Account account;
     public BusinessInvoice(int a, String i, float am){
         invoiceId = a;
         invoiceDetails = i;

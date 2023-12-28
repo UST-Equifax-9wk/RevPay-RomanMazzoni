@@ -10,27 +10,50 @@ import java.util.Set;
 public class Account {
     @Id
     @Column(name = "AccountId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer accountId;
 
     //AccountId AccountType
     @Column(name = "AccountType") //BUISINESS OR USER
-    private String accountType;
+    private Boolean accountBusiness;
+
 
     @Column(name = "balance")
     private float balance = 0;
-    public Account(String accountType){
 
-        this.accountType = accountType;
+    @Column(name = "Username", unique = true)
+    private String username;
+
+    @Column(name = "Password")
+    private String password;
+
+    @Column(name = "Email", unique = true)
+    private String email;
+
+    @Column(name = "Phone Number", unique = true)
+    private String phoneNumber;
+    public Account(boolean accountType){
+
+        this.accountBusiness = accountType;
+    }
+    public Account(boolean accountType, String username, String password){
+
+        this.accountBusiness = accountType;
+        this.username = username;
+        this.password = password;
     }
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private UserAccount userAccount;
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private BusinessAccount businessAccount;
+
+
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<BusinessInvoice> invoices;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private Set<Loan> loans;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
     @JsonManagedReference
@@ -44,6 +67,7 @@ public class Account {
 
     }
 
+
     public void setId(Integer id) {
         this.accountId = id;
     }
@@ -52,15 +76,56 @@ public class Account {
         return accountId;
     }
 
-    public String getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
-    }
 
     public void changeBalance(float change){
         balance = balance + change;
+    }
+
+    public Boolean getAccountBusiness() {
+        return accountBusiness;
+    }
+
+    public void setAccountBusiness(Boolean accountBusiness) {
+        this.accountBusiness = accountBusiness;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }

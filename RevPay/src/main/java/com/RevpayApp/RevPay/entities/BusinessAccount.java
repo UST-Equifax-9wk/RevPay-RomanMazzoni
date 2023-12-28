@@ -24,18 +24,9 @@ public class BusinessAccount {
 
 
 
-    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
-    private Set<BusinessInvoice> invoices;
 
-    @OneToMany(mappedBy = "businessAccount", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
-    private Set<Loan> loans;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "Account Id")
-    private Account account;
+
 
     public BusinessAccount(int a, String u, String p, String e){
         accountId = a;

@@ -8,7 +8,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional(Transactional.TxType.REQUIRED)
@@ -44,6 +46,11 @@ public class UserAccountService {
     public UserAccount createNewUser(UserAccount ua){
         return userRepository.save(ua);
     }
+
+    public List<UserAccount> getAllUsers(){
+        return userRepository.findAll();
+    }
+
 
     public UserAccount getByAccountID(int id) throws ObjectNotFoundException {
         Optional<UserAccount> ua = userRepository.findById(id);

@@ -1,6 +1,7 @@
 package com.RevpayApp.RevPay.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity(name = "Credit and Debit cards")
@@ -29,6 +30,7 @@ public class Card {
 
     @ManyToOne
     @JoinColumn(name = "Account Id")
+    @JsonBackReference
     private Account account;
 
 
@@ -52,14 +54,6 @@ public class Card {
 
     public Card() {
 
-    }
-
-    public int getcardId() {
-        return cardId;
-    }
-
-    public void setcardId(int cardId) {
-        this.cardId = cardId;
     }
 
     public int getCardId() {
@@ -117,4 +111,6 @@ public class Card {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+
 }
