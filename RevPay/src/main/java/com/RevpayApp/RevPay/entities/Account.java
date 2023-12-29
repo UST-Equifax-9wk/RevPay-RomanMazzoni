@@ -30,7 +30,7 @@ public class Account {
     @Column(name = "Email", unique = true)
     private String email;
 
-    @Column(name = "Phone Number", unique = true)
+    @Column(name = "PhoneNumber", unique = true)
     private String phoneNumber;
     public Account(boolean accountType){
 

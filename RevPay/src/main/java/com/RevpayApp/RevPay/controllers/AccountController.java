@@ -2,6 +2,7 @@ package com.RevpayApp.RevPay.controllers;
 
 
 import com.RevpayApp.RevPay.entities.Account;
+import com.RevpayApp.RevPay.exceptions.DuplicateKeyException;
 import com.RevpayApp.RevPay.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class AccountController {
     }
 
     @PostMapping (path = "/Accounts")
-    public Account registerAccount(@RequestBody Account account){
+    public Account registerAccount(@RequestBody Account account) throws DuplicateKeyException {
         return accountService.createNewAccount(account);
     }
 
