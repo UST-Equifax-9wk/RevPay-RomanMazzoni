@@ -5,12 +5,14 @@ import com.RevpayApp.RevPay.entities.Account;
 import com.RevpayApp.RevPay.exceptions.DuplicateKeyException;
 import com.RevpayApp.RevPay.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class AccountController {
     private final AccountService accountService;
 
@@ -29,5 +31,9 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
+
+@ExceptionHandler(DuplicateKeyException.class)
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String duplicateKeyExceptionHandler(){return "That username/email/phone number is already in use!";}
 
 }

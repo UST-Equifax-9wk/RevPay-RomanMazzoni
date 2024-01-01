@@ -84,4 +84,12 @@ public class AccountService {
     public List<Account> getAllAccounts(){
         return accountRepository.findAll();
     }
+
+    public boolean authAccount(Account a){
+        Optional<Account> a2 = accountRepository.findAccountByUsername(a.getUsername());
+        if(a2.isEmpty())
+            return false;
+            else
+                return (a2.get().getPassword().equals(a.getPassword()));
+    }
 }
