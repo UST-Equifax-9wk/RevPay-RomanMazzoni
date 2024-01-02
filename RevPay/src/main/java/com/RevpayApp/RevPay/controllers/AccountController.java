@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
+@RequestMapping(path = "/Accounts")
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class AccountController {
     private final AccountService accountService;
@@ -21,12 +22,12 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping (path = "/Accounts")
+    @PostMapping (path = "")
     public Account registerAccount(@RequestBody Account account) throws DuplicateKeyException {
         return accountService.createNewAccount(account);
     }
 
-    @GetMapping(path = "/Accounts")
+    @GetMapping(path = "")
     public List<Account> getAllAccounts(){
         return accountService.getAllAccounts();
     }

@@ -20,8 +20,8 @@ public class CardService {
         this.accountRepository = accountRepository;
         this.cardRepository = cardRepository;
     }
-    public Card saveCard(Card card, int ai){
-        Account a = accountRepository.findById(ai).get();
+    public Card saveCard(Card card, String ai){
+        Account a = accountRepository.findAccountByUsername(ai).get();
         card.setAccount(a);
         return cardRepository.save(card);
     }
