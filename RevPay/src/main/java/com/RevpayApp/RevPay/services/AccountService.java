@@ -92,4 +92,9 @@ public class AccountService {
             else
                 return (a2.get().getPassword().equals(a.getPassword()));
     }
+    //set up a service to pay between accounts
+    public float updateInfoForAccount(Account account){
+        accountRepository.save(account);
+        return account.getBalance();
+    }
 }

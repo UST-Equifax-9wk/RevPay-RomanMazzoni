@@ -16,7 +16,7 @@ public class Card {
     @Column(name = "Credit/Debit")
     private String cardType;
 
-    @Column(name = "Card Number")
+    @Column(name = "Card Number", unique = true)
     private String cardNumber;
 
     @Column(name = "Security Code")
