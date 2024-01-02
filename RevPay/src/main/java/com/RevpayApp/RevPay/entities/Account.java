@@ -10,7 +10,7 @@ import java.util.Set;
 public class Account {
     @Id
     @Column(name = "AccountId")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
 
     //AccountId AccountType

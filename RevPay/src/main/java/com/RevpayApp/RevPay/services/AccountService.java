@@ -94,7 +94,9 @@ public class AccountService {
     }
     //set up a service to pay between accounts
     public float updateInfoForAccount(Account account){
-        accountRepository.save(account);
+        Optional<Account> a2 = accountRepository.findAccountByUsername(account.getUsername());
+        a2.get().setBalance(account.getBalance());
+        accountRepository.save(a2.get());
         return account.getBalance();
     }
 }

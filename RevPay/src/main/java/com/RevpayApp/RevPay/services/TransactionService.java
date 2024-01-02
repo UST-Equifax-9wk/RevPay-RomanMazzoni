@@ -22,8 +22,8 @@ public class TransactionService {
         this.accountRepository = accountRepository;
         this.TransactionRepository = TransactionRepository;
     }
-    public Transaction saveTransaction(Transaction Transaction, int ai){
-        Account a = accountRepository.findById(ai).get();
+    public Transaction saveTransaction(Transaction Transaction, String u){
+        Account a = accountRepository.findAccountByUsername(u).get();
         Transaction.setAccount(a);
         return TransactionRepository.save(Transaction);
     }
