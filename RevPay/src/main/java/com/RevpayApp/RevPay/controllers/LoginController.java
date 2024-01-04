@@ -43,7 +43,7 @@ public class LoginController {
     @GetMapping(path = "/cookie-test")
     @ResponseStatus(HttpStatus.OK)
     public Account testCookie(@CookieValue(name = "username") String username) throws ObjectNotFoundException {//get cookie from request
-        System.out.println("cookie username: " + username);
+        //System.out.println("cookie username: " + username);
         return accountService.getAccountByUsername(username);
     }
 

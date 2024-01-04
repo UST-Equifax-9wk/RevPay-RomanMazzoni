@@ -51,6 +51,10 @@ public class AccountController {
     @GetMapping(path = "/phoneNumber/{phoneNumber}")
     public Account getAccountByPhoneNumber(@PathVariable String phoneNumber) throws ObjectNotFoundException { return accountService.getAccountByPhonenumber(phoneNumber);}
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/accountid/{id}")
+    public Account getAccountByAccountId(@PathVariable int id) throws ObjectNotFoundException { return accountService.getAccountByAccountId(id);}
+
 
     @ExceptionHandler(DuplicateKeyException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

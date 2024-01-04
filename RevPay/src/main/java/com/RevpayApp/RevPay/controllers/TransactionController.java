@@ -10,6 +10,9 @@ import com.RevpayApp.RevPay.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Set;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class TransactionController {
@@ -22,15 +25,23 @@ public class TransactionController {
         this.accountService = accountService;
     }
     @PostMapping(path = "/Accounts/{username}/addTransaction")
-    public Transaction addCardToAccount(@PathVariable String username, @RequestBody Transaction transaction) throws ObjectNotFoundException {
+    public Transaction addTransactionToAccount(@PathVariable String username, @RequestBody Transaction transaction) throws ObjectNotFoundException {
         Account account = accountService.getAccountByUsername(username);
         transaction.setAccount(account);
         return transactionService.saveTransaction(transaction, username);
     }
+    @GetMapping(path = "/Accounts/{username}/transactions")
+    public Set<Transaction> getAllTransactionsForAccount(@PathVariable String username) throws ObjectNotFoundException {
+        Account account = accountService.getAccountByUsername(username);
+        return transactionService.findAllTransactionsForAccount(account);
+    }
+
 
     @ExceptionHandler(ObjectNotFoundException.class)
     public String accountNotFoundExceptionHandler() {
         return "Cannot find account, this shouldn't happen here";
     }
+
+
 
 }

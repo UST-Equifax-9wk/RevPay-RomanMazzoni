@@ -1,0 +1,25 @@
+<h2>Register your new card</h2>
+
+<a href="accountHome">Back</a>
+<br><br>
+<label>Card type:</label>
+<input type="text" id = cardType [(ngModel)]="cardType">
+<br>
+<label>CardNumber:</label>
+<input type="text" id = cardNumber [(ngModel)]="cardNumber">
+<br>
+<label>Security code:</label>
+<input type="password" id = SecurityCode [(ngModel)]="securityCode">
+<br>
+<label>Expiration Date:</label>
+<input type="text" id =expiration [(ngModel)] = "expirationDate">
+<br>
+<label>Zipcode:</label>
+<input type="text" id=zipcode [(ngModel)] = "zipcode">
+<br><br>
+<button (click)="registerCard()" *ngIf="cardNumber != '' && cardType != '' && securityCode != '' && expirationDate != '' && zipcode != ''; else dullButton">Register</button>
+<ng-template #dullButton>
+    <button disabled="true">Register</button>
+</ng-template>
+<br>
+

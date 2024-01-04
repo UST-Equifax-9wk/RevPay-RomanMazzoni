@@ -1,0 +1,19 @@
+<h2>Send money</h2>
+<a href="accountHome">Back</a>
+<br><br>
+
+<label>Send money to account by:</label>
+<select [(ngModel)] = toAccount id ="toAccount">
+    <option value="username">Username</option>
+    <option value="phoneNumber">Phone Number</option>
+    <option value="email">Email</option>
+</select>
+<br>
+<label *ngIf="toAccount != ''">send to account with {{toAccount}} of: </label>
+<input *ngIf="toAccount != ''" type="text" id = "accountDeet" [(ngModel)] = accountDeet>
+<br>
+<label>Amount: </label>
+<input type="number" id="amount" [(ngModel)] = amount>
+<br><br>
+<button (click)="useCookie()" *ngIf=" toAccount != '' && amount > 0 && accountDeet != ''">Send!</button>
+

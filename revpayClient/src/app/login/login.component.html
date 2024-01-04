@@ -1,0 +1,11 @@
+<h2>Login</h2>
+<br>
+<label>Username:</label>
+<input type="text" id="username" [(ngModel)] = "username">
+<br>
+<label>Password</label>
+<input type = "password" id = "password" [(ngModel)] = "password">
+<br>
+<button (click)="login()" *ngIf="password != '' && username != ''">Login!</button>
+<button disabled *ngIf="password == '' || username == ''">Login!</button>
+<br><br>

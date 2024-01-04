@@ -2,12 +2,15 @@ package com.RevpayApp.RevPay.controllers;
 
 import com.RevpayApp.RevPay.entities.Account;
 import com.RevpayApp.RevPay.entities.Card;
+import com.RevpayApp.RevPay.entities.Transaction;
 import com.RevpayApp.RevPay.exceptions.DuplicateKeyException;
 import com.RevpayApp.RevPay.exceptions.ObjectNotFoundException;
 import com.RevpayApp.RevPay.services.AccountService;
 import com.RevpayApp.RevPay.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
@@ -26,6 +29,12 @@ public class CardController {
         Account account = accountService.getAccountByUsername(username);
         card.setAccount(account);
         return cardService.saveCard(card, username);
+    }
+
+    @GetMapping(path = "/Accounts/{username}/cards")
+    public Set<Card> getAllTransactionsForAccount(@PathVariable String username) throws ObjectNotFoundException {
+        Account account = accountService.getAccountByUsername(username);
+        return cardService.findAllCardsForAccount(account);
     }
 
     @ExceptionHandler(ObjectNotFoundException.class)

@@ -1,0 +1,21 @@
+<h2>Please register your account</h2>
+
+<label>Username:</label>
+<input type="text" id = username [(ngModel)]="username">
+<br>
+<label>Password:</label>
+<input type="Password" id = sdasadf [(ngModel)]="password">
+<br>
+<label>Email:</label>
+<input type="text" id = email [(ngModel)]="email">
+<br>
+<label>Phone Number:</label>
+<input type="text" id =phoneNumber [(ngModel)] = "phoneNumber">
+<br>
+<label>Is this account for a business?</label>
+<input type="checkbox" id=accountType [(ngModel)] = "accountBusiness">
+<br><br>
+<button (click)="registerAccount()" *ngIf="username != '' && password != '' && email != '' && phoneNumber != ''; else dullButton">Register</button>
+<ng-template #dullButton>
+    <button disabled="true">Register</button>
+</ng-template>

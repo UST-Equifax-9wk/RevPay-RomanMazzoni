@@ -10,7 +10,7 @@ import java.util.Set;
 public class Account {
     @Id
     @Column(name = "AccountId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer accountId;
 
     //AccountId AccountType
@@ -33,12 +33,10 @@ public class Account {
     @Column(name = "PhoneNumber", unique = true)
     private String phoneNumber;
     public Account(boolean accountType){
-
         this.accountBusiness = accountType;
     }
-    public Account(boolean accountType, String username, String password){
-
-        this.accountBusiness = accountType;
+    public Account(int id, String username, String password){
+        this.accountId = id;
         this.username = username;
         this.password = password;
     }
