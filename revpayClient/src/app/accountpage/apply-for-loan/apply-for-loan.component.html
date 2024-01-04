@@ -14,9 +14,9 @@
 <input type="text" id = distributer [(ngModel)]="distributer">
 <br>
 <br><br>
-<button *ngIf="distributer != '' && initialAmount != 0" (click)="registerLoan()">Apply</button>
+<button *ngIf="distributer != '' && initialAmount > 0" (click)="registerLoan()">Apply</button>
 <br>
 
 </div>
 
-<h1 *ngIf="!business">Your account is not a business account!</h1>>
+<h1 *ngIf="!business">Your account is not a business account!</h1>

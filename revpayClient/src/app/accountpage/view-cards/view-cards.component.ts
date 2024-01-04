@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 
-import { AccountDto, RemoteService } from '../../remote.service';
+import { AccountDto, RemoteService, CurrentAccount } from '../../remote.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,7 +18,15 @@ export class ViewCardsComponent {
   cardsExpir:Array<string>
   cardsZip:Array<string>
   cardsArray:Array<Root2>
-
+  account1:CurrentAccount = {
+    id:0,
+    username:"",
+    password:"",
+    email:"",
+    phoneNumber:"",
+    accountBusiness:false,
+    balance:0
+  };
   constructor(remoteService:RemoteService){
     this.username = "";
     this.remoteService = remoteService;
@@ -39,6 +47,13 @@ export class ViewCardsComponent {
         if (data.body){
           let accountDto:any = data.body;
           this.username = accountDto.username;
+          this.account1.id = accountDto.id;
+          this.account1.username = accountDto.username;
+          this.account1.password = accountDto.password;
+          this.account1.phoneNumber = accountDto.phoneNumber;
+          this.account1.email = accountDto.email;
+          this.account1.accountBusiness = accountDto.accountBusiness;
+          this.account1.balance = accountDto.balance;
         }
         this.loadCards();
       },
@@ -72,7 +87,19 @@ export class ViewCardsComponent {
       }
     })
   }
-
+  addFunds(){
+    this.remoteService.transferMoney(this.account1,5).subscribe({
+      next: (data) => {
+        console.log(data.body)
+        if (data.body != null){
+          alert("You added $5 to your account")
+        }
+      },
+      error: (error) => {
+        console.log("error: ", error)
+      }
+    })
+  }
   
 }
 export type Root = Root2[]
