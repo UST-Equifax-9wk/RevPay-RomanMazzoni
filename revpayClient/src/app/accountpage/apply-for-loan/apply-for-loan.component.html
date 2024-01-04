@@ -1,0 +1,22 @@
+
+<div *ngIf="business">
+<h2>Apply for a new loan!</h2>
+
+<a href="accountHome">Back</a>
+<br><br>
+<label>Loan amount:</label>
+<input type="number" id = loanAmount [(ngModel)]="initialAmount">
+<br>
+<label>Interest:</label>
+<input type="number" id = Interest [(ngModel)]="interest">
+<br>
+<label>distributer:</label>
+<input type="text" id = distributer [(ngModel)]="distributer">
+<br>
+<br><br>
+<button *ngIf="distributer != '' && initialAmount != 0" (click)="registerLoan()">Apply</button>
+<br>
+
+</div>
+
+<h1 *ngIf="!business">Your account is not a business account!</h1>>
