@@ -2,11 +2,12 @@ package com.RevpayApp.RevPay.repositories;
 
 
 import com.RevpayApp.RevPay.entities.Account;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.util.Assert;
 
 @DataJpaTest
 public class AccountRepositoryTest {
@@ -20,7 +21,7 @@ public class AccountRepositoryTest {
     @Test
     void test(){
         Account ta = new Account(5, "username", "password");
-        sut.save(ta);
-        Assertions.assertEquals(entityManager.find(Account.class, ta.getId()), ta);
+        Account test2 = sut.save(ta);
+        Assertions.assertThat(entityManager.find(Account.class, test2.getId()) ).isEqualTo(ta);
     }
 }

@@ -50,6 +50,15 @@ export class RemoteService{
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
   }
+
+  registerLoan(newLoanDto: NewLoanDto, username: string): Observable<HttpResponse<Object>>{
+    console.log("Creating loan request...");
+    return this.httpClient.post(this.baseUrl + "/Accounts/" + username + "/addLoanRequest", JSON.stringify(newLoanDto),{
+      observe: 'response',
+      withCredentials: true ,
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    })
+  }
   transferMoney(account2:CurrentAccount, sentAmount:number): Observable<HttpResponse<Object>>{
     account2.balance = account2.balance + sentAmount;
     //console.log("THIS IS HERE" , account1.username)
@@ -119,6 +128,12 @@ export interface CardDto{
   expirationDate:string
   zipcode:string
 }
+export interface NewLoanDto{
+  interest:number
+  distributer:string
+  initialAmount:number
+}
+
 export interface TransacionDto{
   transactionDetails:string
   transactionAmount:number

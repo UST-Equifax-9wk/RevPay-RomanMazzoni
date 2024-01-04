@@ -29,6 +29,9 @@ public class Loan {
     @Column(name = "Loan Start Date")
     private String loanStartDate;
 
+    @Column(name = "Approved")
+    private boolean accepted;
+
     @ManyToOne
     @JoinColumn(name = "Account Id")
     @JsonBackReference
@@ -98,5 +101,21 @@ public class Loan {
 
     public void changeRemainingTotal(float change){
         remainingTotal = remainingTotal + change;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

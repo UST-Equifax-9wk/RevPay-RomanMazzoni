@@ -8,6 +8,7 @@ import { SendMoneyComponent } from './accountpage/send-money/send-money.componen
 import { LogoutComponent } from './accountpage/logout/logout.component';
 import { ViewTransactionsPageComponent } from './accountpage/view-transactions-page/view-transactions-page.component';
 import { ViewCardsComponent } from './accountpage/view-cards/view-cards.component';
+import { ApplyForLoanComponent } from './accountpage/apply-for-loan/apply-for-loan.component';
 
 export const routes: Routes = [
     {path: "registration", component: RegistrationComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
     {path: "sendMoney", component:SendMoneyComponent},
     {path: "logout", component:LogoutComponent},
     {path: "viewTransactions", component:ViewTransactionsPageComponent},
-    {path: "viewCards", component:ViewCardsComponent}
+    {path: "viewCards", component:ViewCardsComponent},
+    {path: "applyLoan", component:ApplyForLoanComponent}
 ];

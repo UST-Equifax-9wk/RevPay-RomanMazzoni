@@ -23,4 +23,10 @@ public class LoanService {
     }
 
     public Set<Loan> findAllLoansForAccount(Account a){return loanRepository.getLoansByAccount_Id(a.getId());}
+
+    public Loan saveLoan(Loan loan, String username){
+        Account a = accountRepository.findAccountByUsername(username).get();
+        loan.setAccount(a);
+        return loanRepository.save(loan);
+    }
 }

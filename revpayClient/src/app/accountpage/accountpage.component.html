@@ -1,9 +1,12 @@
 <div *ngIf="username != ''">
-<h2>Welcome to your profile {{username}}</h2>
+<h2 *ngIf = "!business">Welcome to your profile {{username}}</h2>
+<h2 *ngIf = "business">Welcome to your business account home, {{username}}</h2>
 <div>Current email: {{email}}</div>
 <div>Current phone number: {{phoneNumber}}</div>
 <div>Your balance: {{balance | currency}}</div>
 <a href="cardRegister">register new card</a> | <a href="sendMoney">send money</a>  | <a href="logout">logout</a> | <a href="viewTransactions">View transactions for your account</a> | <a href="viewCards">View your cards</a>
+<br>
+<a *ngIf = "business" href="applyLoan">Apply for a business loan</a>
 </div>
 <div *ngIf="username == ''">
     <h2>Please log in!</h2>
